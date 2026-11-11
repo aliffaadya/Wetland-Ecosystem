@@ -33,6 +33,10 @@ Route::get('/missions', function () {
     return view('pages.missions');
 });
 
+Route::get('/missions/fire-prevention', function () {
+    return view('pages.fire-prevention');
+});
+
 // Dashboard siswa - hanya untuk pengguna yang sudah login
 Route::get('/dashboard', function () {
     $user = Auth::user();
@@ -65,7 +69,7 @@ Route::get('/dashboard', function () {
 
     $topicTotal = count(config('wetland_lessons.exercises', []));
     $completedTopicCount = $topicCompletions->count();
-    $learningProgressPercent = $topicTotal > 0 ? (int) round($completedTopicCount / $topicTotal * 100) : 0;
+    $learningProgressPercent = $topicTotal > 0 ? (int) round(($completedTopicCount / $topicTotal) * 100) : 0;
 
     return view('student.dashboard', [
         'activities' => $activities,
