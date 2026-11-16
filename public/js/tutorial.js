@@ -1047,6 +1047,20 @@ function checkExercise(topic) {
 
   if (correctCount === total) {
     ProgressStore.markTopicComplete(topic.id);
+    fetch(`${window.WETLAND_TOPIC_COMPLETION_URL}/${encodeURIComponent(topic.id)}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')?.content || ""
+      },
+      body: JSON.stringify({ answers: questions.map((_, index) => TUT_ANSWERS[index]) })
+    }).then(response => {
+      if (!response.ok) throw new Error("Gagal menyimpan status materi.");
+    }).catch(error => {
+      console.error("Wetland Explorer:", error);
+      showToast("Status materi belum tersimpan. Periksa koneksi lalu coba lagi.");
+    });
   }
 
   renderSidebar();

@@ -906,6 +906,12 @@
 
     <main class="dash-wrap">
 
+        @if (session('learning_gate_error'))
+            <div role="alert" style="margin-bottom:18px;padding:14px 18px;border-radius:12px;background:#fff4e5;border:1px solid #eed6a8;color:#704c17;">
+                {{ session('learning_gate_error') }}
+            </div>
+        @endif
+
         <!-- WELCOME BANNER -->
 
         <section class="welcome-banner">
@@ -948,7 +954,7 @@
                 </div>
 
                 <div class="stat-info">
-                    <strong>0%</strong>
+                    <strong>{{ $learningProgressPercent }}%</strong>
                     <span>Progress Pembelajaran</span>
                 </div>
 
@@ -962,8 +968,8 @@
                 </div>
 
                 <div class="stat-info">
-                    <strong>0</strong>
-                    <span>Latihan Diselesaikan</span>
+                    <strong>{{ $evaluationCount }}</strong>
+                    <span>Evaluasi Diselesaikan</span>
                 </div>
 
             </article>
@@ -976,7 +982,7 @@
                 </div>
 
                 <div class="stat-info">
-                    <strong>—</strong>
+                    <strong>{{ $latestEvaluation ? $latestEvaluation->score : '—' }}</strong>
                     <span>Nilai Kuis Terakhir</span>
                 </div>
 
@@ -996,7 +1002,7 @@
                     Progress Materi
                 </h2>
 
-                <span class="progress-percent">0%</span>
+                <span class="progress-percent">{{ $learningProgressPercent }}%</span>
 
             </div>
 
@@ -1006,11 +1012,11 @@
             </p>
 
             <div class="progress-track">
-                <div class="progress-fill"></div>
+                <div class="progress-fill" style="width:{{ $learningProgressPercent }}%"></div>
             </div>
 
             <small class="progress-note">
-                0 dari seluruh materi selesai
+                {{ $completedTopicCount }} dari {{ $topicTotal }} materi selesai
             </small>
 
         </section>
@@ -1212,7 +1218,9 @@
             </div>
 
             <p class="history-description">
-                Lihat hasil latihan dan kuis yang telah kamu kerjakan.
+                Lihat materi, eksplorasi, dan evaluasi yang telah kamu selesaikan.
+                Total nilai terkumpul: {{ $evaluationScoreTotal }} poin.
+                Rata-rata: {{ $evaluationAverage === null ? '—' : $evaluationAverage.'/100' }}.
             </p>
 
             <div class="table-wrap">
@@ -1230,13 +1238,22 @@
 
                     <tbody>
 
-                        <tr>
-                            <td colspan="4" class="empty-history">
-                                Belum ada hasil belajar yang tersimpan.
-                                <br>
-                                Yuk, mulai aktivitas belajarmu!
-                            </td>
-                        </tr>
+                        @forelse ($activities as $activity)
+                            <tr>
+                                <td>{{ $activity['name'] }}</td>
+                                <td>{{ $activity['completed_at']->timezone(config('app.timezone'))->format('d M Y, H:i') }}</td>
+                                <td>{{ $activity['score'] ?? '—' }}</td>
+                                <td>{{ $activity['status'] }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="empty-history">
+                                    Belum ada aktivitas belajar yang tersimpan.
+                                    <br>
+                                    Yuk, mulai aktivitas belajarmu!
+                                </td>
+                            </tr>
+                        @endforelse
 
                     </tbody>
 

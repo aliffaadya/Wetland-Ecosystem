@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Materi Pembelajaran — Wetland Explorer</title>
@@ -922,6 +923,7 @@
   <script src="{{ asset('js/data-tutorials.js') }}"></script>
   <script>
     window.WETLAND_DASHBOARD_URL = @json(url('/dashboard'));
+    window.WETLAND_TOPIC_COMPLETION_URL = @json(url('/learning-progress/topics'));
   </script>
 
   <script src="{{ asset('js/tutorial.js') }}"></script>
