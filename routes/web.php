@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\ProfileController;
@@ -12,7 +11,7 @@ Route::get('/', function () {
 // Halaman pembelajaran
 Route::get('/tutorial', function () {
     return view('pages.tutorial');
-});
+})->middleware('auth');
 
 Route::get('/quiz', function () {
     return view('pages.quiz');
@@ -40,4 +39,4 @@ Route::middleware('auth')->group(function () {
 });
 
 // Autentikasi Breeze
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
