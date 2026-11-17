@@ -37,6 +37,14 @@ Route::get('/missions/fire-prevention', function () {
     return view('pages.fire-prevention');
 });
 
+Route::get('/missions/water-pollution', function () {
+    return view('pages.water-pollution');
+})->middleware('auth')->name('missions.water');
+
+Route::get('/missions/ecosystem-restoration', function () {
+    return view('pages.ecosystem-restoration');
+})->middleware('auth')->name('missions.ecosystem');
+
 // Dashboard siswa - hanya untuk pengguna yang sudah login
 Route::get('/dashboard', function () {
     $user = Auth::user();

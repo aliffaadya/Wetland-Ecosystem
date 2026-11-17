@@ -1,267 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — HTML Learning Portal</title>
-<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1C1B22">
-<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
-<meta name="description" content="Guided project briefs that combine HTML, semantic structure, accessibility, and CSS across Units 1-3 — with requirements checklists and grading rubrics.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Misi Pelestarian — Wetland Explorer</title>
 
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
-<link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendor/fonts/fonts.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<link rel="stylesheet" href="css/style.css">
-<style>
-  .project-card{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-bottom:28px;box-shadow:var(--shadow);}
-  .project-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:10px;}
-  .project-level{display:inline-block;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;}
-  .level-beginner{background:rgba(60,154,95,.12);color:#3c9a5f;}
-  .level-intermediate{background:rgba(196,64,107,.12);color:var(--tag);}
-  .level-advanced{background:rgba(33,31,46,.12);color:var(--ink);}
-  .project-meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);}
-  .req-list{list-style:none;padding:0;margin:10px 0 0;}
-  .req-list li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:14px;border-bottom:1px solid var(--line);}
-  .req-list li:last-child{border-bottom:none;}
-  .req-list i{color:var(--tag);margin-top:3px;flex:none;}
-  .rubric-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px;}
-  .rubric-table th,.rubric-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);}
-  .rubric-table th{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);}
-  .topic-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
-  .topic-pill{font-family:var(--font-mono);font-size:11px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink-soft);}
-  .project-section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);margin:18px 0 4px;}
-</style>
+  <style>
+    body {
+      background: #F6F8F5;
+      font-family: 'Manrope', Arial, sans-serif;
+      color: #202b25;
+      margin: 0;
+    }
+  </style>
 </head>
-<body>
 
-<header id="siteHeader">
-  <nav class="navbar navbar-expand-lg" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><span class="brk">&lt;</span>HTML Learning Portal<span class="brk">/&gt;</span></a><span class="navbar-byline d-none d-md-inline">by Dr. Puneet Thapar</span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorials</a></li>
-          <li class="nav-item"><a class="nav-link" href="practice.html">Practice</a></li>
-          <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
-          <li class="nav-item"><a class="nav-link" href="playground.html">Playground</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreDropdown">
-              <li><a class="dropdown-item nav-link" href="reference.html">Reference</a></li>
-              <li><a class="dropdown-item nav-link" href="glossary.html">Glossary</a></li>
-              <li><a class="dropdown-item nav-link" href="report.html">My Progress</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item">
-            <button id="searchTrigger" class="btn btn-icon" aria-label="Search the site" title="Search (press /)">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button id="themeToggle" class="btn btn-icon" aria-label="Toggle dark mode" title="Toggle dark / light mode">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-          </li>
-        </ul>
+<body class="bg-[#F6F8F5] text-gray-800 antialiased flex flex-col min-h-screen"
+      x-data="{ 
+        isMission1Done: localStorage.getItem('mission_1_completed') === 'true',
+        isMission2Done: localStorage.getItem('mission_2_completed') === 'true',
+        isMission3Done: localStorage.getItem('mission_3_completed') === 'true'
+      }">
+
+  <!-- NAVBAR WETLAND EXPLORER -->
+  <nav class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="{{ route('home') }}" class="flex items-center gap-2.5">
+          <div class="w-9 h-9 bg-[#2E7D32] rounded-lg flex items-center justify-center text-white shadow-sm">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C7.5 2 4 5.5 4 10c0 3.5 2.5 6.5 6 7.5V22h4v-4.5c3.5-1 6-4 6-7.5 0-4.5-3.5-8-8-8z"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block font-bold text-[#1B5E20] text-base">Wetland</span>
+            <span class="block font-bold text-[#2E7D32] text-sm -mt-1">Explorer</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <a href="{{ route('home') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Beranda</a>
+          <a href="{{ url('/tutorial') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Materi</a>
+          <a href="{{ url('/exploration') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Eksplorasi</a>
+          <a href="{{ url('/missions') }}" class="text-[#1B5E20] font-bold border-b-2 border-[#2E7D32] pb-1">Misi</a>
+          <a href="{{ url('/quiz') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Kuis</a>
+          <a href="{{ route('home') }}#tentang" class="text-gray-600 hover:text-[#2E7D32] transition">Tentang</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          @auth
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 hover:bg-green-100 text-[#1B5E20] font-semibold text-xs transition">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+              </svg>
+              <span>{{ Auth::user()->name }}</span>
+            </a>
+          @endauth
+        </div>
       </div>
     </div>
   </nav>
-</header>
 
-<!-- ============ SITE-WIDE SEARCH MODAL ============ -->
-<div id="searchOverlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Site search">
-  <div class="search-panel">
-    <div class="search-input-row">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" id="searchInput" placeholder="Search tutorials, quizzes, tags, projects&hellip;" autocomplete="off">
-      <button id="searchClose" class="btn btn-icon" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+  <!-- KONTEN UTAMA HALAMAN MISI -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-10 h-10 rounded-xl bg-green-100 text-[#2E7D32] flex items-center justify-center shadow-sm">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8Z"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl md:text-3xl font-extrabold text-[#1d382d] tracking-tight">Misi Pelestarian</h1>
     </div>
-    <div id="searchResults" class="search-results"></div>
+
+    <!-- Container Banner -->
+    <div class="rounded-3xl overflow-hidden shadow-xl border border-green-200 bg-cover bg-center relative p-6 md:p-8"
+         style="background-image: linear-gradient(to bottom, rgba(232, 245, 233, 0.72) 0%, rgba(46, 125, 50, 0.35) 55%, rgba(27, 94, 32, 0.78) 100%), url('{{ asset('images/wetland-hero.svg') }}');">
+      
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mb-8 pt-2">
+        
+        <!-- Karakter Penjelajah SVG -->
+        <div class="flex-shrink-0 drop-shadow-lg">
+          <svg class="w-44 h-44 md:w-52 md:h-52" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="120" cy="125" r="95" fill="#FFFFFF" fill-opacity="0.35"/>
+            <path d="M84 148L76 210H164L156 148H84Z" fill="#795548"/>
+            <path d="M72 215C72 178 90 158 120 158C150 158 168 178 168 215H72Z" fill="#A1887F"/>
+            <path d="M104 158L120 182L136 158H104Z" fill="#EFEBE9"/>
+            <rect x="88" y="182" width="20" height="22" rx="3" fill="#8D6E63"/>
+            <rect x="132" y="182" width="20" height="22" rx="3" fill="#8D6E63"/>
+            <path d="M98 156C106 168 134 168 142 156L136 174L120 166L104 174L98 156Z" fill="#2E7D32"/>
+            <rect x="110" y="136" width="20" height="24" rx="8" fill="#FFCCBC"/>
+            <circle cx="120" cy="108" r="36" fill="#FFCCBC"/>
+            <path d="M84 104C84 78 100 66 120 66C140 66 156 78 156 104C152 88 138 82 120 82C102 82 88 88 84 104Z" fill="#3E2723"/>
+            <ellipse cx="120" cy="76" rx="54" ry="12" fill="#6D4C41"/>
+            <path d="M90 76C90 54 104 44 120 44C136 44 150 54 150 76H90Z" fill="#8D6E63"/>
+            <rect x="90" y="68" width="60" height="6" fill="#2E7D32"/>
+            <circle cx="107" cy="108" r="4" fill="#212121"/>
+            <circle cx="133" cy="108" r="4" fill="#212121"/>
+            <circle cx="108" cy="107" r="1.5" fill="#FFFFFF"/>
+            <circle cx="134" cy="107" r="1.5" fill="#FFFFFF"/>
+            <path d="M111 122C115 127 125 127 129 122" stroke="#5D4037" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="99" cy="116" r="4.5" fill="#FF8A65" fill-opacity="0.5"/>
+            <circle cx="141" cy="116" r="4.5" fill="#FF8A65" fill-opacity="0.5"/>
+            <circle cx="176" cy="164" r="12" fill="#FFCCBC"/>
+            <path d="M156 174L174 164" stroke="#A1887F" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Balon Pesan -->
+        <div class="relative bg-white/95 backdrop-blur-sm text-gray-800 p-6 rounded-2xl shadow-lg max-w-sm border border-green-100">
+          <div class="hidden md:block absolute -left-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[12px] border-r-white/95"></div>
+          
+          <h2 class="text-lg md:text-xl font-extrabold text-[#1B5E20] mb-1.5"
+              x-text="isMission1Done ? 'Luar Biasa! Misi 1 Selesai!' : 'Ayo selesaikan misi!'"></h2>
+          <p class="text-gray-700 text-sm md:text-base leading-relaxed font-medium"
+             x-text="isMission1Done ? 'Misi 2 kini telah terbuka! Silakan lanjutkan petualangan.' : 'Bantu selamatkan lahan basah dari ancaman kerusakan.'"></p>
+        </div>
+
+      </div>
+
+      <!-- 3 Kartu Misi -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 relative z-10">
+        
+        <!-- Misi 1: Selesai / Ulangi -->
+        <a href="{{ url('/missions/fire-prevention') }}" class="bg-white/95 hover:bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition flex flex-col items-center text-center relative border-2 border-[#388E3C] group">
+          <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 transition">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></svg>
+          </div>
+          <span class="text-xs font-extrabold text-gray-500 uppercase tracking-wider">Misi 1</span>
+          <h3 class="text-base font-extrabold text-gray-900 mt-0.5 mb-4">Cegah Kebakaran Gambut</h3>
+          
+          <div class="mt-auto w-full flex items-center justify-between pt-2 border-t border-gray-100">
+            <span class="text-xs font-bold text-[#2E7D32]" x-text="isMission1Done ? 'Selesai (Ulangi) →' : 'Mulai Misi →'"></span>
+            <span class="w-6 h-6 rounded-full bg-[#388E3C] text-white flex items-center justify-center shadow-sm">
+              <i class="fa-solid fa-check text-xs" x-show="isMission1Done"></i>
+              <i class="fa-solid fa-play text-[9px] ml-0.5" x-show="!isMission1Done"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Misi 2: Dinamis (Terkunci / Terbuka berdasarkan isMission1Done) -->
+        <div class="rounded-2xl p-5 shadow-md flex flex-col items-center text-center relative transition"
+             :class="isMission1Done ? 'bg-white/95 border-2 border-blue-500 hover:shadow-xl cursor-pointer group' : 'bg-white/90 border border-gray-200 opacity-90 cursor-not-allowed'">
+          
+          <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-500 flex items-center justify-center mb-3"
+               :class="isMission1Done ? 'group-hover:scale-110 transition' : ''">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8z"/></svg>
+          </div>
+          <span class="text-xs font-extrabold uppercase tracking-wider" :class="isMission1Done ? 'text-blue-600' : 'text-gray-400'">Misi 2</span>
+          <h3 class="text-base font-extrabold mt-0.5 mb-4" :class="isMission1Done ? 'text-gray-900' : 'text-gray-700'">Atasi Pencemaran Air</h3>
+          
+          <div class="mt-auto pt-2 w-full">
+            <template x-if="isMission1Done">
+              <a href="{{ url('/missions/water-pollution') }}" class="w-full flex items-center justify-between pt-2 border-t border-gray-100 text-xs font-bold text-blue-700">
+                <span>Mulai Misi →</span>
+                <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-play text-[9px] ml-0.5"></i>
+                </span>
+              </a>
+            </template>
+            <template x-if="!isMission1Done">
+              <span class="w-7 h-7 rounded-full bg-gray-200 text-gray-600 inline-flex items-center justify-center text-xs">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+            </template>
+          </div>
+        </div>
+
+        <!-- Misi 3: Terkunci -->
+        <div class="rounded-2xl p-5 shadow-md flex flex-col items-center text-center relative transition"
+     :class="isMission2Done ? 'bg-white/95 border-2 border-green-600 hover:shadow-xl cursor-pointer group' : 'bg-white/90 border border-gray-200 opacity-90 cursor-not-allowed'">
+  
+  <div class="w-12 h-12 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center mb-3"
+       :class="isMission2Done ? 'group-hover:scale-110 transition' : ''">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8Z"/></svg>
+  </div>
+  <span class="text-xs font-extrabold uppercase tracking-wider" :class="isMission2Done ? 'text-green-700' : 'text-gray-400'">Misi 3</span>
+  <h3 class="text-base font-extrabold mt-0.5 mb-4" :class="isMission2Done ? 'text-gray-900' : 'text-gray-700'">Pulihkan Ekosistem</h3>
+  
+  <div class="mt-auto pt-2 w-full">
+    <template x-if="isMission2Done">
+      <a href="{{ url('/missions/ecosystem-restoration') }}" class="w-full flex items-center justify-between pt-2 border-t border-gray-100 text-xs font-bold text-green-800">
+        <span x-text="isMission3Done ? 'Selesai (Ulangi) →' : 'Mulai Misi →'"></span>
+        <span class="w-6 h-6 rounded-full bg-[#2E7D32] text-white flex items-center justify-center text-xs">
+          <i class="fa-solid fa-check text-xs" x-show="isMission3Done"></i>
+          <i class="fa-solid fa-play text-[9px] ml-0.5" x-show="!isMission3Done"></i>
+        </span>
+      </a>
+    </template>
+    <template x-if="!isMission2Done">
+      <span class="w-7 h-7 rounded-full bg-gray-200 text-gray-600 inline-flex items-center justify-center text-xs">
+        <i class="fa-solid fa-lock"></i>
+      </span>
+    </template>
   </div>
 </div>
-
-<section class="section-pad">
-  <div class="container" style="max-width:900px;">
-    <div class="eyebrow">projects</div>
-    <h1>Build real projects, not just examples</h1>
-    <p class="lead-text">Three guided project briefs, one per difficulty tier, each combining concepts across Units 1&ndash;3. Build them in the <a href="playground.html">Playground</a> or in your own code editor, then check your work against the requirements and rubric below.</p>
-
-    <div class="alert" style="background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius); padding:16px 20px; margin:24px 0;">
-      <i class="fa-solid fa-circle-info" style="color:var(--tag);"></i>
-      <strong>How to use these:</strong> each brief lists concrete, checkable requirements &mdash; treat it like a real assignment spec. Build the whole thing as a single HTML file with embedded CSS (or separate .html/.css files), then self-grade with the rubric before treating it as &quot;done.&quot;
-    </div>
-
-    <!-- ============ PROJECT 1: BEGINNER ============ -->
-    <div class="project-card">
-      <div class="project-head">
-        <div>
-          <span class="project-level level-beginner">Beginner</span>
-          <h2 class="mb-1 mt-2">Personal Bio Page</h2>
-        </div>
-        <span class="project-meta"><i class="fa-regular fa-clock"></i> ~2&ndash;3 hours</span>
-      </div>
-      <p>Build a single-page personal profile — the kind of page you'd link from a resume. This project only needs Unit 1, so it's a good first real build once you've finished the HTML fundamentals topics.</p>
-
-      <div class="project-section-title">Requirements</div>
-      <ul class="req-list">
-        <li><i class="fa-solid fa-square-check"></i> A valid HTML5 document with correct &lt;!DOCTYPE&gt;, lang attribute, charset, and a descriptive &lt;title&gt;</li>
-        <li><i class="fa-solid fa-square-check"></i> One &lt;h1&gt; with your name, followed by a short intro paragraph</li>
-        <li><i class="fa-solid fa-square-check"></i> A profile photo (or placeholder image) with meaningful alt text and explicit width/height</li>
-        <li><i class="fa-solid fa-square-check"></i> An unordered list of at least 4 skills or interests</li>
-        <li><i class="fa-solid fa-square-check"></i> At least one internal link (to another section via an id) and one external link (opening in a new tab safely)</li>
-        <li><i class="fa-solid fa-square-check"></i> A mailto: link so visitors can email you</li>
-        <li><i class="fa-solid fa-square-check"></i> Correct use of &lt;strong&gt;/&lt;em&gt; somewhere in your intro text (not &lt;b&gt;/&lt;i&gt;)</li>
-        <li><i class="fa-solid fa-square-check"></i> A &lt;table&gt; or &lt;dl&gt; listing 3&ndash;4 facts (e.g. education, location, hobbies)</li>
-      </ul>
-
-      <div class="project-section-title">Grading rubric</div>
-      <table class="rubric-table">
-        <tr><th>Criteria</th><th>Points</th></tr>
-        <tr><td>Valid document structure &amp; no broken tags</td><td>20</td></tr>
-        <tr><td>All required content sections present</td><td>30</td></tr>
-        <tr><td>Correct, meaningful use of semantic text tags</td><td>20</td></tr>
-        <tr><td>Working links (internal, external, mailto)</td><td>15</td></tr>
-        <tr><td>Accessible image (real alt text, not empty or generic)</td><td>15</td></tr>
-      </table>
-
-      <div class="topic-pills">
-        <span class="topic-pill">HTML Document Structure</span>
-        <span class="topic-pill">Text Formatting</span>
-        <span class="topic-pill">Lists</span>
-        <span class="topic-pill">Hyperlinks</span>
-        <span class="topic-pill">Images</span>
       </div>
     </div>
 
-    <!-- ============ PROJECT 2: INTERMEDIATE ============ -->
-    <div class="project-card">
-      <div class="project-head">
-        <div>
-          <span class="project-level level-intermediate">Intermediate</span>
-          <h2 class="mb-1 mt-2">Café Landing Page with Contact Form</h2>
-        </div>
-        <span class="project-meta"><i class="fa-regular fa-clock"></i> ~5&ndash;7 hours</span>
-      </div>
-      <p>Build a small business landing page for a fictional café — semantic structure, an accessible contact form, and enough CSS to make it look like a real page, not a plain document.</p>
+  </main>
 
-      <div class="project-section-title">Requirements</div>
-      <ul class="req-list">
-        <li><i class="fa-solid fa-square-check"></i> Semantic layout: &lt;header&gt; with a &lt;nav&gt;, &lt;main&gt; containing multiple &lt;section&gt;s (Menu, About, Contact), and a &lt;footer&gt;</li>
-        <li><i class="fa-solid fa-square-check"></i> The nav is a Flexbox row aligning a logo and links with justify-content</li>
-        <li><i class="fa-solid fa-square-check"></i> A menu section built as an accessible &lt;table&gt; (thead/tbody, scope on header cells) listing at least 5 items with prices</li>
-        <li><i class="fa-solid fa-square-check"></i> A contact form: labeled name, email (required, type="email"), and message fields, plus a submit button</li>
-        <li><i class="fa-solid fa-square-check"></i> Every form field styled with a :focus state (border-color or box-shadow change)</li>
-        <li><i class="fa-solid fa-square-check"></i> A consistent color palette using at least 3 CSS custom properties declared on :root</li>
-        <li><i class="fa-solid fa-square-check"></i> A responsive image (object-fit or CSS max-width) in the About section, with real alt text</li>
-        <li><i class="fa-solid fa-square-check"></i> At least one media query so the layout adapts on a narrow screen (e.g. nav or menu table)</li>
-        <li><i class="fa-solid fa-square-check"></i> A "Skip to main content" link as the first element in &lt;body&gt;</li>
-      </ul>
+  <footer class="bg-white border-t border-gray-200 py-5 text-center text-xs text-gray-500 mt-auto">
+    <p>© {{ date('Y') }} <strong>Wetland Explorer</strong>. Media Pembelajaran Ekosistem Lahan Basah.</p>
+  </footer>
 
-      <div class="project-section-title">Grading rubric</div>
-      <table class="rubric-table">
-        <tr><th>Criteria</th><th>Points</th></tr>
-        <tr><td>Semantic HTML structure (correct landmark elements)</td><td>20</td></tr>
-        <tr><td>Accessible, properly labeled contact form</td><td>20</td></tr>
-        <tr><td>Accessible data table for the menu</td><td>15</td></tr>
-        <tr><td>Flexbox navbar + at least one responsive breakpoint</td><td>20</td></tr>
-        <tr><td>CSS variables used consistently for color</td><td>15</td></tr>
-        <tr><td>Skip link present and functional</td><td>10</td></tr>
-      </table>
-
-      <div class="topic-pills">
-        <span class="topic-pill">Semantic HTML Elements</span>
-        <span class="topic-pill">Forms and Form Controls</span>
-        <span class="topic-pill">Tables and Data Representation</span>
-        <span class="topic-pill">Flexbox Layout</span>
-        <span class="topic-pill">CSS Variables</span>
-        <span class="topic-pill">Responsive Web Design</span>
-      </div>
-    </div>
-
-    <!-- ============ PROJECT 3: ADVANCED / CAPSTONE ============ -->
-    <div class="project-card">
-      <div class="project-head">
-        <div>
-          <span class="project-level level-advanced">Advanced &middot; Capstone</span>
-          <h2 class="mb-1 mt-2">Responsive Portfolio Website</h2>
-        </div>
-        <span class="project-meta"><i class="fa-regular fa-clock"></i> ~10&ndash;15 hours</span>
-      </div>
-      <p>A multi-section personal portfolio site — the closest thing to a real freelance/job-ready build in this course. Draws on all three units: accessible semantic HTML, a validated form, and a fully responsive CSS layout with motion.</p>
-
-      <div class="project-section-title">Requirements</div>
-      <ul class="req-list">
-        <li><i class="fa-solid fa-square-check"></i> Full semantic structure: header/nav, a hero section, a projects/work section, an about section, a contact section, footer</li>
-        <li><i class="fa-solid fa-square-check"></i> A CSS Grid-based project gallery (repeat(auto-fit, minmax(&hellip;))) showing at least 4 project cards</li>
-        <li><i class="fa-solid fa-square-check"></i> Each project card has a hover transition (transform and/or box-shadow) using the transition property</li>
-        <li><i class="fa-solid fa-square-check"></i> A contact form with at least 4 field types (e.g. text, email, select, textarea), each with proper labels and at least 2 validation attributes (required, pattern, minlength, etc.)</li>
-        <li><i class="fa-solid fa-square-check"></i> :valid/:invalid styling on at least one form field</li>
-        <li><i class="fa-solid fa-square-check"></i> A theme built entirely from CSS custom properties on :root (at least 4 variables: primary color, background, text color, spacing unit)</li>
-        <li><i class="fa-solid fa-square-check"></i> At least one @keyframes animation (e.g. a subtle fade-in or a loading indicator), respecting prefers-reduced-motion</li>
-        <li><i class="fa-solid fa-square-check"></i> Fully responsive: a mobile-first media query strategy with at least 2 breakpoints, tested by resizing the browser down to ~375px wide</li>
-        <li><i class="fa-solid fa-square-check"></i> Full keyboard accessibility: visible focus states, a skip link, and a logical tab order</li>
-        <li><i class="fa-solid fa-square-check"></i> Passes a basic accessibility check: every image has real alt text, every input has a label, heading levels are in logical order (no skipped levels)</li>
-      </ul>
-
-      <div class="project-section-title">Grading rubric</div>
-      <table class="rubric-table">
-        <tr><th>Criteria</th><th>Points</th></tr>
-        <tr><td>Semantic structure &amp; accessibility (labels, alt text, heading order, skip link)</td><td>25</td></tr>
-        <tr><td>CSS Grid project gallery, responsive at 2+ breakpoints</td><td>20</td></tr>
-        <tr><td>Form: field variety, validation attributes, :valid/:invalid styling</td><td>20</td></tr>
-        <tr><td>CSS variables used for a coherent, consistent theme</td><td>15</td></tr>
-        <tr><td>Animation/transition used tastefully, with reduced-motion respected</td><td>10</td></tr>
-        <tr><td>Overall polish and code organization</td><td>10</td></tr>
-      </table>
-
-      <div class="topic-pills">
-        <span class="topic-pill">Semantic HTML Elements</span>
-        <span class="topic-pill">Accessibility Fundamentals</span>
-        <span class="topic-pill">Form Validation Basics</span>
-        <span class="topic-pill">CSS Grid Layout</span>
-        <span class="topic-pill">CSS Variables</span>
-        <span class="topic-pill">Responsive Web Design</span>
-        <span class="topic-pill">CSS Animations</span>
-        <span class="topic-pill">CSS Transitions</span>
-      </div>
-    </div>
-
-    <h2 class="mt-5">Tips before you start</h2>
-    <ul>
-      <li>Sketch the page structure in plain HTML first, with zero CSS — get the semantics and content right before you style anything.</li>
-      <li>Build mobile-first: style the narrow layout first, then add a media query to enhance it for wider screens.</li>
-      <li>Come back to the <a href="reference.html">tag reference</a> and your unit study guides (<a href="resources/Unit1-Study-Guide.pdf">Unit 1</a>, <a href="resources/Unit2-Study-Guide.pdf">Unit 2</a>, <a href="resources/Unit3-Study-Guide.pdf">Unit 3</a>) whenever you forget an attribute or property name — that's exactly what they're for.</li>
-      <li>Test keyboard navigation by actually unplugging your mouse (or just using Tab) for a minute on whatever you build.</li>
-    </ul>
-
-    <div class="cta-banner mt-5" style="border-radius:20px;">
-      <h2>Not sure where to start?</h2>
-      <p>Review the relevant tutorial topics first, or open the Playground to prototype freely.</p>
-      <div class="d-flex gap-3 justify-content-center flex-wrap">
-        <a href="tutorial.html" class="btn btn-light-lg">Review Tutorials</a>
-        <a href="playground.html" class="btn btn-outline-light-lg">Open Playground</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="siteFooter">
-  <div class="container">
-    <p class="text-center small text-muted mb-0">© 2026 Dr. Puneet Thapar. All rights reserved. HTML Learning Portal — built for classroom and self-paced learning.</p>
-  </div>
-</footer>
-
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="js/data-search-index.js"></script>
-<script src="js/app.js"></script>
 </body>
+
 </html>
