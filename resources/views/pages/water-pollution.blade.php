@@ -18,6 +18,67 @@
       color: #202b25;
       margin: 0;
     }
+
+    body, button, input, textarea, select {
+      font-family: 'Manrope', Arial, sans-serif !important;
+    }
+
+    /* Penyesuaian tampilan Misi 2 agar konsisten dengan Misi 1 dan Tutorial */
+    .mission-question {
+      margin: 0 0 1rem;
+      color: #26332f;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    .mission-option-text {
+      color: #526158;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .mission-hud {
+      width: fit-content;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .mission-stepper {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    @media (max-width: 640px) {
+      .mission-question {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: .9rem;
+      }
+
+      .mission-option-text {
+        font-size: .875rem;
+        line-height: 1.6;
+      }
+
+      .mission-hud {
+        gap: .55rem;
+        padding: .6rem .75rem;
+      }
+
+      .mission-hud-label {
+        font-size: .7rem;
+      }
+
+      .mission-stepper {
+        gap: .35rem;
+      }
+    }
   </style>
 </head>
 
@@ -63,7 +124,7 @@
   </nav>
 
   <!-- KONTEN UTAMA MISI 2 -->
-  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full"
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full"
         x-data="{
           step: 1,
           xp: 0,
@@ -107,13 +168,13 @@
 
     <!-- Header & HUD -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-      <a href="{{ url('/missions') }}" class="inline-flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-[#284b3b] transition">
-        <span>&larr; Kembali ke Daftar Misi</span>
+      <a href="{{ url('/missions') }}" class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-200 text-sm font-bold text-gray-700 hover:bg-gray-300 hover:text-gray-900 transition self-start">
+        Kembali
       </a>
 
-      <div class="flex items-center gap-3 bg-white px-4 py-2.5 rounded-2xl shadow-sm border border-blue-100">
+      <div class="mission-hud flex items-center gap-3 bg-white px-4 py-2.5 rounded-2xl shadow-sm border border-blue-100">
         <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-gray-500">Kualitas Air Sungai:</span>
+          <span class="mission-hud-label text-xs font-bold text-gray-500">Kualitas Air Sungai:</span>
           <div class="w-24 h-2.5 bg-gray-200 rounded-full overflow-hidden">
             <div class="h-full transition-all duration-500 rounded-full"
                  :class="waterQuality < 50 ? 'bg-amber-600' : 'bg-blue-600'"
@@ -130,8 +191,8 @@
     </div>
 
     <!-- Judul & Studi Kasus -->
-    <div class="bg-white rounded-2xl p-6 md:p-7 shadow-sm border border-blue-100 mb-6">
-      <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+    <div class="bg-white rounded-2xl p-4 sm:p-5 md:p-7 shadow-sm border border-blue-100 mb-6">
+      <div class="flex items-start sm:items-center justify-between flex-wrap gap-3 mb-4">
         <div class="flex items-center gap-3.5">
           <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shadow-sm flex-shrink-0">
             <i class="fa-solid fa-water text-xl"></i>
@@ -142,7 +203,7 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="mission-stepper">
           <span class="px-3 py-1 rounded-full text-xs font-extrabold" :class="step === 1 ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800'">1. Analisis Dampak</span>
           <span class="px-3 py-1 rounded-full text-xs font-extrabold" :class="step === 2 ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-400'">2. Studi Pustaka</span>
         </div>
@@ -159,11 +220,11 @@
     </div>
 
     <!-- TAHAP 1: PILIHAN GANDA (A-E) -->
-    <div x-show="step === 1" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-blue-100">
+    <div x-show="step === 1" class="bg-white rounded-2xl p-4 sm:p-5 md:p-8 shadow-sm border border-blue-100">
       <div class="inline-block bg-blue-50 text-blue-700 text-xs font-extrabold px-3 py-1 rounded-lg mb-3">
         Tantangan 1 • Pilihan Ganda (A–E)
       </div>
-      <h3 class="text-base md:text-lg font-extrabold text-gray-900 mb-5">
+      <h3 class="mission-question">
         Apa dampak langsung dari pembuangan limbah organik dan sampah rumah tangga secara terus-menerus terhadap ekosistem perairan sungai?
       </h3>
 
@@ -176,11 +237,11 @@
                     'border-red-500 bg-red-50 text-red-900': q1Done && q1Selected === opt.id && opt.id !== 'b',
                     'border-gray-200 bg-white opacity-55': q1Done && q1Selected !== opt.id && opt.id !== 'b'
                   }"
-                  class="w-full text-left p-4 rounded-xl border-2 transition flex items-start gap-3.5">
+                  class="w-full text-left p-3.5 sm:p-4 rounded-xl border-2 transition flex items-start gap-3">
             <span class="w-7 h-7 rounded-full font-extrabold text-xs flex items-center justify-center flex-shrink-0 uppercase"
                   :class="q1Done && opt.id === 'b' ? 'bg-blue-600 text-white' : (q1Done && q1Selected === opt.id ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700')"
                   x-text="opt.id"></span>
-            <span class="text-sm font-semibold text-gray-700 leading-snug" x-text="opt.text"></span>
+            <span class="mission-option-text" x-text="opt.text"></span>
           </button>
         </template>
       </div>
@@ -202,16 +263,16 @@
     </div>
 
     <!-- TAHAP 2: VALIDASI STUDI PUSTAKA & SUMBER ILMIAH -->
-    <div x-show="step === 2" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-blue-100">
+    <div x-show="step === 2" class="bg-white rounded-2xl p-4 sm:p-5 md:p-8 shadow-sm border border-blue-100">
       <div class="inline-block bg-green-50 text-[#2E7D32] text-xs font-extrabold px-3 py-1 rounded-lg mb-3">
         Tantangan 2 • Verifikasi Referensi & Sumber Ilmiah
       </div>
-      <h3 class="text-base md:text-lg font-extrabold text-gray-900 mb-3">
+      <h3 class="mission-question">
         Apakah pernyataan berikut didukung oleh literatur ilmiah mengenai kualitas air lahan basah?
       </h3>
 
       <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5 mb-5">
-        <p class="text-sm md:text-base font-bold text-gray-800 italic mb-3">
+        <p class="mission-option-text italic mb-3">
           "Penurunan kadar Oksigen Terlarut (Dissolved Oxygen / DO) di bawah ambang batas normal akibat limbah domestik dapat menyebabkan terjadinya eutrofikasi dan kematian organisme akuatik."
         </p>
         <div class="text-xs text-gray-600 space-y-1 bg-white p-3 rounded-xl border border-gray-100">
@@ -223,11 +284,11 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <button @click="answerQ2(true)"
-                class="p-4 rounded-2xl border-2 font-extrabold text-sm border-gray-200 hover:border-blue-500 hover:bg-blue-50/40 transition">
+                class="p-3.5 sm:p-4 rounded-2xl border-2 font-extrabold text-sm border-gray-200 hover:border-blue-500 hover:bg-blue-50/40 transition">
           ✅ Ya, Pernyataan Valid Sesuai Sumber
         </button>
         <button @click="answerQ2(false)"
-                class="p-4 rounded-2xl border-2 font-extrabold text-sm border-gray-200 hover:border-red-500 hover:bg-red-50/40 transition">
+                class="p-3.5 sm:p-4 rounded-2xl border-2 font-extrabold text-sm border-gray-200 hover:border-red-500 hover:bg-red-50/40 transition">
           ❌ Tidak Sesuai Literatur
         </button>
       </div>

@@ -58,26 +58,39 @@ Route::get('/dashboard', function () {
         ->latest('completed_at')
         ->get();
 
-    $activities = $topicCompletions->map(fn ($completion) => [
-        'name' => 'Materi: '.ucwords(str_replace('-', ' ', $completion->item_key)),
+    $activities = $topicCompletions->map(fn($completion) => [
+        'name' => 'Materi: ' . ucwords(str_replace('-', ' ', $completion->item_key)),
         'completed_at' => $completion->completed_at,
         'score' => null,
         'status' => 'Selesai',
-    ])->concat($otherCompletions->map(fn ($completion) => [
-        'name' => $completion->item_key === 'mangrove' ? 'Eksplorasi Hutan Mangrove' : 'Eksplorasi: '.ucwords(str_replace('-', ' ', $completion->item_key)),
-        'completed_at' => $completion->completed_at,
-        'score' => null,
-        'status' => 'Selesai',
-    ]))->concat($results->map(fn ($result) => [
-        'name' => $result->evaluation_name,
-        'completed_at' => $result->completed_at,
-        'score' => $result->score.'/100 ('.$result->correct_answers.'/'.$result->total_questions.')',
-        'status' => $result->score >= 70 ? 'Tuntas' : 'Perlu belajar lagi',
-    ]))->sortByDesc('completed_at')->values();
+    ])->concat($otherCompletions->map(fn($completion) => [
+                    'name' => $completion->item_key === 'mangrove' ? 'Eksplorasi Hutan Mangrove' : 'Eksplorasi: ' . ucwords(str_replace('-', ' ', $completion->item_key)),
+                    'completed_at' => $completion->completed_at,
+                    'score' => null,
+                    'status' => 'Selesai',
+                ]))->concat($results->map(fn($result) => [
+                    'name' => $result->evaluation_name,
+                    'completed_at' => $result->completed_at,
+                    'score' => $result->score . '/100 (' . $result->correct_answers . '/' . $result->total_questions . ')',
+                    'status' => $result->score >= 70 ? 'Tuntas' : 'Perlu belajar lagi',
+                ]))->sortByDesc('completed_at')->values();
 
+    // Progress materi
     $topicTotal = count(config('wetland_lessons.exercises', []));
     $completedTopicCount = $topicCompletions->count();
-    $learningProgressPercent = $topicTotal > 0 ? (int) round(($completedTopicCount / $topicTotal) * 100) : 0;
+
+    // Progress eksplorasi
+    $explorationTotal = count(config('wetland_exploration.ecosystems', []));
+    $completedExplorationCount = $otherCompletions->count();
+
+    // Progress keseluruhan pembelajaran
+    $totalLearningItems = $topicTotal + $explorationTotal;
+
+    $completedLearningItems = $completedTopicCount + $completedExplorationCount;
+
+    $learningProgressPercent = $totalLearningItems > 0
+        ? (int) round(($completedLearningItems / $totalLearningItems) * 100)
+        : 0;
 
     return view('student.dashboard', [
         'activities' => $activities,

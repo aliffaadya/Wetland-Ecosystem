@@ -18,49 +18,389 @@
       color: #202b25;
       margin: 0;
     }
+
+    /* NAVBAR: mengikuti desain halaman Tutorial */
+    :root {
+      --forest: #284b3b;
+      --forest-dark: #1d382d;
+      --sage: #e6eee2;
+      --line: #dce5d8;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 12px rgba(29, 56, 45, .05);
+    }
+
+    .header-inner {
+      width: min(1440px, calc(100% - 48px));
+      min-height: 76px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      color: var(--forest-dark);
+      font-family: 'Manrope', sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.6px;
+      text-decoration: none;
+    }
+
+    .brand:hover { color: var(--forest); }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: var(--forest);
+      color: #fff;
+      font-size: 25px;
+    }
+
+    .main-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .main-navigation a {
+      padding: 10px 13px;
+      border-radius: 8px;
+      color: #65736a;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .main-navigation a:hover {
+      background: #f1f5ed;
+      color: var(--forest);
+    }
+
+    .main-navigation a.active {
+      background: var(--sage);
+      color: var(--forest-dark);
+    }
+
+    .profile-area { position: relative; flex-shrink: 0; }
+
+    .profile-button {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #f7f9f5;
+      color: var(--forest);
+      font-size: 18px;
+      cursor: pointer;
+      transition: .2s;
+      text-decoration: none;
+    }
+
+    .profile-button:hover,
+    .profile-button.active {
+      background: var(--sage);
+      border-color: #b9cbb7;
+    }
+
+    .profile-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 225px;
+      padding: 9px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 12px 35px rgba(29, 56, 45, .13);
+      display: none;
+    }
+
+    .profile-dropdown.show { display: block; }
+
+    .profile-info {
+      padding: 11px 12px;
+      border-bottom: 1px solid #edf1eb;
+      margin-bottom: 6px;
+    }
+
+    .profile-info strong {
+      display: block;
+      color: var(--forest-dark);
+      font-size: 13px;
+    }
+
+    .profile-info span {
+      display: block;
+      color: #879187;
+      font-size: 11px;
+      margin-top: 3px;
+    }
+
+    .profile-dropdown button,
+    .profile-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 11px 12px;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #526158;
+      font-family: inherit;
+      font-size: 12px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .profile-dropdown button:hover,
+    .profile-dropdown a:hover { background: #f3f6f0; }
+    .profile-dropdown .logout-button { color: #b44d46; }
+    .profile-dropdown .logout-button:hover { background: #fff2ef; }
+
+    .mobile-toggle {
+      display: none;
+      width: 39px;
+      height: 39px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--forest);
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .logout-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(19, 37, 28, .48);
+    }
+
+    .logout-modal.show { display: flex; }
+
+    .logout-dialog {
+      width: 100%;
+      max-width: 390px;
+      padding: 27px;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .17);
+      text-align: center;
+    }
+
+    .logout-icon {
+      display: grid;
+      place-items: center;
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #fff0ed;
+      color: #bd5b50;
+      font-size: 22px;
+    }
+
+    .logout-dialog h3 {
+      margin: 0 0 8px;
+      color: var(--forest-dark);
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .logout-dialog p {
+      margin: 0 0 22px;
+      color: #77847a;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .logout-actions { display: flex; gap: 10px; }
+
+    .logout-actions button {
+      flex: 1;
+      padding: 11px;
+      border: 0;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .cancel-logout { background: #edf2e9; color: var(--forest); }
+    .confirm-logout { background: #b9534a; color: #fff; }
+
+    @media (max-width: 950px) {
+      .header-inner { gap: 12px; }
+      .main-navigation { gap: 0; }
+      .main-navigation a { padding: 9px 8px; font-size: 11px; }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        position: relative;
+        width: calc(100% - 28px);
+        min-height: 68px;
+      }
+
+      .brand { font-size: 17px; gap: 9px; }
+      .brand-mark { width: 34px; height: 34px; font-size: 22px; }
+
+      .mobile-toggle {
+        display: grid;
+        place-items: center;
+        margin-left: auto;
+      }
+
+      .main-navigation {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: -14px;
+        right: -14px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 16px;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 10px 18px rgba(29, 56, 45, .08);
+      }
+
+      .main-navigation.show { display: flex; }
+      .main-navigation a { padding: 12px; font-size: 13px; }
+      .profile-area { margin-left: 0; }
+    }
+
+    @media (max-width: 420px) {
+      .profile-dropdown { right: 0; }
+    }
+
+    body, button, input, textarea, select {
+      font-family: 'Manrope', Arial, sans-serif !important;
+    }
+
+    /* Penyesuaian konten Misi 1 agar nyaman dibaca seperti halaman Tutorial */
+    .mission-question {
+      margin: 0 0 1rem;
+      color: #26332f;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    .mission-option-text {
+      color: #526158;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .mission-hud {
+      width: fit-content;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .mission-question {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: .9rem;
+      }
+
+      .mission-option-text {
+        font-size: .875rem;
+        line-height: 1.6;
+      }
+
+      .mission-hud {
+        gap: .55rem;
+        padding: .6rem .75rem;
+      }
+    }
   </style>
 </head>
 
 <body class="bg-[#F6F8F5] text-gray-800 antialiased flex flex-col min-h-screen">
 
-  <!-- NAVBAR WETLAND EXPLORER -->
-  <nav class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-          <div class="w-9 h-9 bg-[#2E7D32] rounded-lg flex items-center justify-center text-white shadow-sm">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C7.5 2 4 5.5 4 10c0 3.5 2.5 6.5 6 7.5V22h4v-4.5c3.5-1 6-4 6-7.5 0-4.5-3.5-8-8-8z"/>
-            </svg>
-          </div>
-          <div class="leading-tight">
-            <span class="block font-bold text-[#1B5E20] text-base">Wetland</span>
-            <span class="block font-bold text-[#2E7D32] text-sm -mt-1">Explorer</span>
-          </div>
-        </a>
+  <!-- NAVBAR: SAMA DENGAN HALAMAN TUTORIAL -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="{{ url('/') }}">
+        <span class="brand-mark" aria-hidden="true">♧</span>
+        <span>Wetland Explorer</span>
+      </a>
 
-        <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-          <a href="{{ route('home') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Beranda</a>
-          <a href="{{ url('/tutorial') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Materi</a>
-          <a href="{{ url('/exploration') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Eksplorasi</a>
-          <a href="{{ url('/missions') }}" class="text-[#1B5E20] font-bold border-b-2 border-[#2E7D32] pb-1">Misi</a>
-          <a href="{{ url('/quiz') }}" class="text-gray-600 hover:text-[#2E7D32] transition">Kuis</a>
-          <a href="{{ route('home') }}#tentang" class="text-gray-600 hover:text-[#2E7D32] transition">Tentang</a>
-        </div>
+      <button type="button" class="mobile-toggle" id="mobileNavToggle"
+              aria-label="Buka navigasi" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-        <div class="flex items-center gap-2">
-          @auth
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 hover:bg-green-100 text-[#1B5E20] font-semibold text-xs transition">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-              </svg>
-              <span>{{ Auth::user()->name }}</span>
-            </a>
-          @endauth
+      <nav class="main-navigation" id="mainNavigation">
+        <a href="{{ url('/dashboard') }}">Dashboard</a>
+        <a href="{{ url('/tutorial') }}">Materi</a>
+        <a href="{{ url('/exploration') }}">Eksplorasi</a>
+        <a href="{{ url('/missions') }}" class="active">Misi</a>
+        <a href="{{ url('/quiz') }}">Kuis</a>
+      </nav>
+
+      @auth
+      <div class="profile-area">
+        <button type="button" class="profile-button" id="profileButton"
+                aria-label="Menu profil" aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+        </button>
+
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-info">
+            <strong>{{ Auth::user()->name }}</strong>
+            <span>Siswa Wetland Explorer</span>
+          </div>
+          <a href="{{ url('/dashboard') }}">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+          </a>
+          <button type="button" class="logout-button" id="openLogoutModal">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Keluar
+          </button>
         </div>
       </div>
+      @else
+      <a href="{{ route('login') }}" class="profile-button" aria-label="Masuk">
+        <i class="fa-solid fa-user"></i>
+      </a>
+      @endauth
     </div>
-  </nav>
+  </header>
 
   <!-- KONTEN UTAMA MISI 1 INTERAKTIF (3 VARIASI TANTANGAN) -->
   <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full"
@@ -143,13 +483,13 @@
         }">
 
     <!-- Navigasi Atas & Indikator Status Ekosistem -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-      <a href="{{ url('/missions') }}" class="inline-flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-[#284b3b] transition">
-        <span>&larr; Kembali ke Daftar Misi</span>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6">
+      <a href="{{ url('/missions') }}" class="inline-flex self-start w-auto shrink-0 items-center px-4 py-2 rounded-lg bg-gray-200 text-sm font-bold text-gray-700 hover:bg-gray-300 hover:text-gray-900 transition">
+        Kembali
       </a>
 
       <!-- HUD / Status Permainan Interaktif -->
-      <div class="flex items-center gap-3 bg-white px-4 py-2.5 rounded-2xl shadow-sm border border-green-100">
+      <div class="mission-hud flex items-center gap-3 bg-white px-4 py-2.5 rounded-2xl shadow-sm border border-green-100">
         <!-- Indikator Kelembapan Gambut -->
         <div class="flex items-center gap-2">
           <span class="text-xs font-bold text-gray-500">Kelembapan Gambut:</span>
@@ -176,7 +516,7 @@
     </div>
 
     <!-- Header & Narasi Kasus -->
-    <div class="bg-white rounded-2xl p-6 md:p-7 shadow-sm border border-green-100 mb-6">
+    <div class="bg-white rounded-2xl p-4 sm:p-6 md:p-7 shadow-sm border border-green-100 mb-6">
       <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
         <div class="flex items-center gap-3.5">
           <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shadow-sm flex-shrink-0">
@@ -214,11 +554,11 @@
     <!-- ===================================================================== -->
     <!-- TAHAP 1: PILIHAN GANDA (OPSI A SAMPAI E)                              -->
     <!-- ===================================================================== -->
-    <div x-show="step === 1" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-green-100">
+    <div x-show="step === 1" class="mission-card bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm border border-green-100">
       <div class="inline-block bg-green-50 text-[#2E7D32] text-xs font-extrabold px-3 py-1 rounded-lg mb-3">
         Tantangan 1 dari 3 • Pilihan Ganda (A–E)
       </div>
-      <h3 class="text-base md:text-lg font-extrabold text-gray-900 mb-5">
+      <h3 class="mission-question">
         Tindakan paling tepat apa yang harus segera dilakukan untuk mencegah kebakaran di lahan gambut yang mengering tersebut?
       </h3>
 
@@ -231,11 +571,11 @@
                     'border-red-500 bg-red-50 text-red-900': q1Done && q1Selected === opt.id && opt.id !== 'b',
                     'border-gray-200 bg-white opacity-55': q1Done && q1Selected !== opt.id && opt.id !== 'b'
                   }"
-                  class="w-full text-left p-4 rounded-xl border-2 transition flex items-start gap-3.5">
+                  class="w-full text-left p-3 sm:p-4 rounded-xl border-2 transition flex items-start gap-3">
             <span class="w-7 h-7 rounded-full font-extrabold text-xs flex items-center justify-center flex-shrink-0 uppercase"
                   :class="q1Done && opt.id === 'b' ? 'bg-green-600 text-white' : (q1Done && q1Selected === opt.id ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700')"
                   x-text="opt.id"></span>
-            <span class="text-sm font-semibold text-gray-700 leading-snug" x-text="opt.text"></span>
+            <span class="mission-option-text" x-text="opt.text"></span>
           </button>
         </template>
       </div>
@@ -264,16 +604,16 @@
     <!-- ===================================================================== -->
     <!-- TAHAP 2: BENAR ATAU SALAH (MITOS VS FAKTA GAMBUT)                     -->
     <!-- ===================================================================== -->
-    <div x-show="step === 2" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-green-100">
+    <div x-show="step === 2" class="mission-card bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm border border-green-100">
       <div class="inline-block bg-blue-50 text-blue-700 text-xs font-extrabold px-3 py-1 rounded-lg mb-3">
         Tantangan 2 dari 3 • Analisis Pernyataan (Benar / Salah)
       </div>
-      <h3 class="text-base md:text-lg font-extrabold text-gray-900 mb-3">
+      <h3 class="mission-question">
         Perhatikan pernyataan ilmiah berikut tentang sifat lahan gambut:
       </h3>
 
-      <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5 mb-6 text-center">
-        <p class="text-base md:text-lg font-bold text-gray-800 italic">
+      <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-5 mb-6 text-center">
+        <p class="text-sm sm:text-base font-semibold text-gray-700 italic leading-relaxed">
           "Kebakaran pada lahan gambut sangat mudah dipadamkan hanya dengan menyiram permukaan atasnya saja karena api hanya membakar rumput di permukaan."
         </p>
       </div>
@@ -318,11 +658,11 @@
     <!-- ===================================================================== -->
     <!-- TAHAP 3: SUSUN URUTAN LANGKAH PENYELAMATAN                            -->
     <!-- ===================================================================== -->
-    <div x-show="step === 3" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-green-100">
+    <div x-show="step === 3" class="mission-card bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm border border-green-100">
       <div class="inline-block bg-amber-50 text-amber-700 text-xs font-extrabold px-3 py-1 rounded-lg mb-3">
         Tantangan 3 dari 3 • Susun Urutan Langkah Lapangan
       </div>
-      <h3 class="text-base md:text-lg font-extrabold text-gray-900 mb-2">
+      <h3 class="mission-question">
         Klik kartu tindakan di bawah ini sesuai urutan langkah pemulihan lahan gambut yang paling logis (dari Langkah 1 ke Langkah 3):
       </h3>
       <p class="text-xs text-gray-500 mb-5">Klik kotak pilihan untuk memasukkannya ke slot urutan di bawah.</p>
@@ -396,6 +736,96 @@
   <footer class="bg-white border-t border-gray-200 py-5 text-center text-xs text-gray-500 mt-auto">
     <p>© {{ date('Y') }} <strong>Wetland Explorer</strong>. Media Pembelajaran Ekosistem Lahan Basah.</p>
   </footer>
+
+
+  <!-- LOGOUT CONFIRMATION MODAL: SAMA DENGAN TUTORIAL -->
+  @auth
+  <div class="logout-modal" id="logoutModal">
+    <div class="logout-dialog">
+      <div class="logout-icon">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </div>
+      <h3>Keluar dari akun?</h3>
+      <p>Apakah kamu yakin ingin mengakhiri sesi pembelajaran dan keluar dari akun Wetland Explorer?</p>
+      <div class="logout-actions">
+        <button type="button" class="cancel-logout" id="cancelLogout">Batal</button>
+        <form method="POST" action="{{ route('logout') }}" style="flex: 1;">
+          @csrf
+          <button type="submit" class="confirm-logout" style="width: 100%;">Ya, Keluar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  @endauth
+
+  <!-- INTERAKSI NAVBAR, PROFIL, DAN MENU MOBILE -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const profileButton = document.getElementById('profileButton');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const logoutModal = document.getElementById('logoutModal');
+      const openLogoutModal = document.getElementById('openLogoutModal');
+      const cancelLogout = document.getElementById('cancelLogout');
+      const mobileToggle = document.getElementById('mobileNavToggle');
+      const mainNavigation = document.getElementById('mainNavigation');
+
+      if (profileButton && profileDropdown) {
+        profileButton.addEventListener('click', function (event) {
+          event.stopPropagation();
+          profileDropdown.classList.toggle('show');
+          profileButton.classList.toggle('active');
+          profileButton.setAttribute('aria-expanded', profileDropdown.classList.contains('show'));
+        });
+
+        document.addEventListener('click', function (event) {
+          if (!profileButton.contains(event.target) && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.remove('show');
+            profileButton.classList.remove('active');
+            profileButton.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      if (openLogoutModal && logoutModal) {
+        openLogoutModal.addEventListener('click', function () {
+          logoutModal.classList.add('show');
+          profileDropdown?.classList.remove('show');
+          profileButton?.classList.remove('active');
+        });
+      }
+
+      if (cancelLogout && logoutModal) {
+        cancelLogout.addEventListener('click', function () {
+          logoutModal.classList.remove('show');
+        });
+      }
+
+      if (logoutModal) {
+        logoutModal.addEventListener('click', function (event) {
+          if (event.target === logoutModal) logoutModal.classList.remove('show');
+        });
+      }
+
+      if (mobileToggle && mainNavigation) {
+        mobileToggle.addEventListener('click', function () {
+          mainNavigation.classList.toggle('show');
+          const isOpen = mainNavigation.classList.contains('show');
+          mobileToggle.setAttribute('aria-expanded', isOpen);
+          mobileToggle.innerHTML = isOpen
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        mainNavigation.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            mainNavigation.classList.remove('show');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+          });
+        });
+      }
+    });
+  </script>
 
 </body>
 
