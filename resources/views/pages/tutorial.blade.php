@@ -925,7 +925,7 @@
     window.WETLAND_DASHBOARD_URL = @json(url('/dashboard'));
     window.WETLAND_TOPIC_COMPLETION_URL = @json(url('/learning-progress/topics'));
   </script>
-
+  <script src="{{ asset('js/praktik.js') }}"></script>
   <script src="{{ asset('js/tutorial.js') }}"></script>
 
 
